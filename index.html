@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶韵雅器 · 个人展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimSun", serif; /* 中式字体，贴合茶韵 */
+        }
+
+        body {
+            background: #1a1a1a; /* 主黑色，高级沉稳 */
+            color: #e0e0e0; /* 浅灰，提升可读性 */
+            line-height: 1.8;
+        }
+
+        /* 导航栏 - 极简高级 */
+        nav {
+            background: #121212; /* 深黑，比背景略深 */
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #c9c9c9; /* 高级灰，柔和不刺眼 */
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #a0a0a0; /* 中灰，hover变色 */
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d4b886; /* 浅茶褐，点缀茶元素 */
+        }
+
+        /* 封面 - 融入茶叶、紫砂元素，极简高级 */
+        .hero {
+            height: 75vh;
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), url('https://img.zhihu.com/xxx') center center no-repeat; /* 可替换为自己的茶叶/紫砂背景图 */
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* 茶叶装饰元素（伪元素，无需额外图片） */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: url('https://img.zhihu.com/xxx') center center no-repeat; /* 茶叶图标，可替换 */
+            background-size: contain;
+            opacity: 0.2;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 20%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            background: url('https://img.zhihu.com/xxx') center center no-repeat; /* 紫砂茶具图标，可替换 */
+            background-size: contain;
+            opacity: 0.2;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            color: #c9c9c9;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            padding: 0.8rem 2.2rem;
+            background: transparent;
+            border: 1px solid #c9c9c9;
+            color: #c9c9c9;
+            border-radius: 2px; /* 方角，更显高级 */
+            text-decoration: none;
+            font-weight: 400;
+            display: inline-block;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #d4b886;
+            border-color: #d4b886;
+            color: #121212;
+        }
+
+        /* 通用区块 - 统一间距，贴合茶韵极简风 */
+        .section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #ffffff;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: #d4b886; /* 茶褐线条，点缀 */
+        }
+
+        /* 关于我 - 中式排版，融入茶元素描述 */
+        .about {
+            background: #121212; /* 深黑背景，突出内容 */
+            padding: 3rem;
+            border-radius: 2px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+        }
+
+        .about p {
+            margin-bottom: 1.5rem;
+            color: #a0a0a0;
+            text-indent: 2em; /* 中式首行缩进，贴合茶韵 */
+        }
+
+        .about p span {
+            color: #d4b886; /* 茶褐突出关键词 */
+            font-weight: 500;
+        }
+
+        /* 茶具/紫砂作品展示 - 网格排版，凸显质感 */
+        .works {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: #121212;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #222222; /* 灰黑背景，适配无图时的空白 */
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-info h3 {
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .work-info p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        /* 联系我 - 极简排版，贴合整体风格 */
+        .contact {
+            text-align: center;
+            background: #121212;
+            padding: 3rem;
+            border-radius: 2px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+        }
+
+        .contact p {
+            margin-bottom: 1rem;
+            color: #a0a0a0;
+            font-size: 1.05rem;
+        }
+
+        .contact p span {
+            color: #d4b886;
+        }
+
+        /* 页脚 - 极简沉稳 */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: #0f0f0f; /* 最深黑，收尾沉稳 */
+            color: #777777;
+            margin-top: 5rem;
+            letter-spacing: 1px;
+        }
+
+        /* 响应式适配 - 手机端优化 */
+        @media (max-width: 768px) {
+            .nav-links a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .works {
+                grid-template-columns: 1fr;
+            }
+
+            .about, .contact {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">茶韵雅器</div>
+        <div class="nav-links">
+            <a href="#about">关于我</a>
+            <a href="#works">茶具作品</a>
+            <a href="#contact">联系洽谈</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 封面 - 茶韵主视觉 -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>茶韵藏心 · 器载雅意</h1>
+        <p>深耕茶器具领域，专注紫砂、陶瓷茶具设计与甄选，以器载茶，以茶养心，传递中式茶生活美学</p>
+        <a href="#about" class="btn">走进茶器</a>
+    </div>
+</section>
+
+<!-- 关于我 - 茶行业相关介绍 -->
+<section id="about" class="section">
+    <h2>关于我</h2>
+    <div class="about">
+        <p>自幼浸润茶韵，深耕<span>茶器具行业</span>多年，专注紫砂茶具、陶瓷茶器的甄选与设计，深谙紫砂泥料特性、茶具造型美学与茶性的契合之道。</p>
+        <p>秉持“器以载道，茶以修身”的理念，精选优质紫砂泥、高岭土，严控制作工艺，每一件茶器都兼顾实用性与观赏性，适配六大茶类冲泡需求，让茶友在品茶之余，感受茶器的温润与雅致。</p>
+        <p>主营紫砂茶壶、茶杯、茶盘、茶宠等茶器具，兼顾家用、收藏与礼品定制，坚守匠心，拒绝量产化粗制，只为传递中式茶生活的静谧与美好。</p>
+    </div>
+</section>
+
+<!-- 茶具/紫砂作品展示 -->
+<section id="works" class="section">
+    <h2>茶器作品</h2>
+    <div class="works">
+        <div class="work-card">
+            <img src="" alt="紫砂西施壶"> <!-- 可替换为紫砂茶壶图片 -->
+            <div class="work-info">
+                <h3>紫砂西施壶</h3>
+                <p>原矿紫泥制作，壶型圆润饱满，壶嘴流畅，适配普洱、红茶冲泡，手感温润，兼具实用与收藏价值。</p>
+            </div>
+        </div>
+        <div class="work-card">
+            <img src="" alt="陶瓷盖碗"> <!-- 可替换为陶瓷盖碗图片 -->
+            <div class="work-info">
+                <h3>青瓷盖碗</h3>
+                <p>高白瓷胎体，青瓷釉色温润，薄胎透光，盖沿贴合紧密，适合冲泡绿茶、白茶，凸显茶之色香。</p>
+            </div>
+        </div>
+        <div class="work-card">
+            <img src="" alt="紫砂茶盘"> <!-- 可替换为紫砂茶盘图片 -->
+            <div class="work-info">
+                <h3>紫砂茶盘</h3>
+                <p>整块原矿紫砂雕刻，纹理自然，排水流畅，简约大气，适配各类茶桌，兼具实用性与装饰性。</p>
+            </div>
+        </div>
+        <div class="work-card">
+            <img src="" alt="茶宠摆件"> <!-- 可替换为茶宠图片 -->
+            <div class="work-info">
+                <h3>紫砂茶宠</h3>
+                <p>手工雕刻，造型灵动，选用优质紫砂泥，可养可玩，点缀茶桌，增添茶席雅趣。</p>
+            </div>
+        </div>
+        <div class="work-card">
+            <img src="" alt="陶瓷茶杯"> <!-- 可替换为陶瓷茶杯图片 -->
+            <div class="work-info">
+                <h3>汝窑茶杯</h3>
+                <p>仿汝窑工艺，开片自然，釉色温润如玉，杯型小巧，适合品饮功夫茶，兼具观赏性与实用性。</p>
+            </div>
+        </div>
+        <div class="work-card">
+            <img src="" alt="定制茶礼"> <!-- 可替换为定制茶礼图片 -->
+            <div class="work-info">
+                <h3>定制茶礼套装</h3>
+                <p>紫砂茶壶+茶杯组合，可刻字定制，包装简约高级，适合商务馈赠、节日送礼，传递茶韵心意。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 联系我 - 茶器具洽谈相关 -->
+<section id="contact" class="section">
+    <h2>联系洽谈</h2>
+    <div class="contact">
+        <p>专注茶器具甄选、定制与批发，承接个人采购、礼品定制、门店供货</p>
+        <p>微信：<span>tea-ware888</span>（可替换为自己的微信）</p>
+        <p>邮箱：<span>tea@example.com</span>（可替换为自己的邮箱）</p>
+        <p>地址：XX市XX区XX路 茶韵雅器工作室（可替换为自己的地址）</p>
+        <p>欢迎茶友、同行洽谈交流，共品茶韵，共赏雅器</p>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+    <p>&copy; 2026 茶韵雅器 · 匠心造器，以茶会友  All rights reserved.</p>
+</footer>
+
+</body>
+</html>
